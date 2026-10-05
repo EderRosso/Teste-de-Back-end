@@ -29,6 +29,7 @@
   - [3. Aula 03 — Dublês de Teste (Mocks, Stubs e Spies)](#3-aula-03--dublês-de-teste-mocks-stubs-e-spies)
   - [4. Aula 04 — Testes de Integração com NestJS e Supertest](#4-aula-04--testes-de-integração-com-nestjs-e-supertest)
   - [5. Aula 05 — Testes de Persistência com Mongoose e Banco em Memória](#5-aula-05--testes-de-persistência-com-mongoose-e-banco-em-memória)
+  - [6. Aula 06 — Testes de Middleware, Autenticação JWT e RBAC](#6-aula-06--testes-de-middleware-autenticação-jwt-e-rbac)
 - [🛠️ Tecnologias e Bibliotecas](#️-tecnologias-e-bibliotecas)
 - [🚀 Como Executar o Repositório](#-como-executar-o-repositório)
 - [🧬 Conceitos Fundamentais](#-conceitos-fundamentais)
@@ -52,7 +53,7 @@ Ao longo das aulas, o repositório caminha por todas as principais camadas da pi
                / \
               /   \        E2E / Ponta a Ponta (Fluxos completos do sistema)
              /-----\
-            /       \      Integração (Aula 04 e 05: HTTP, Módulos, Banco em Memória)
+            /       \      Integração & Segurança (Aula 04: HTTP/DTO, Aula 05: BD, Aula 06: Auth/RBAC)
            /---------\
           /           \    Unitários (Aula 02 e 03: Funções puras, Services, Mocks)
          /_____________\
@@ -71,6 +72,7 @@ Clique nos links abaixo para navegar diretamente para a pasta de cada aula no re
 | 📁 [**Aula03**](./Aula03) | Mocks e Dublês de Teste | Isolamento de camadas (`jest.mock`, `jest.fn`, `mockResolvedValue`). |
 | 📁 [**Aula04**](./Aula04) | Testes de Integração com NestJS | Testes de rotas HTTP com Supertest, validação de DTOs e Pipes. |
 | 📁 [**Aula05**](./Aula05) | Persistência com Mongoose | Validação de Schemas, Hooks (pre-save) e `mongodb-memory-server`. |
+| 📁 [**Aula06**](./Aula06) | Middlewares & Autenticação | Validação de Token JWT (`401`), Perfis de Acesso RBAC (`403`) e Sanitização. |
 
 ---
 
@@ -182,13 +184,34 @@ Foco na validação da última linha de defesa da aplicação: o **Schema e Mode
 
 ---
 
+### 6. [Aula 06](./Aula06) — Testes de Middleware, Autenticação JWT e RBAC
+
+Foco em testes de **segurança de APIs REST**, validação de middlewares no Express, autenticação via **JSON Web Token (JWT)** e autorização por perfil (**RBAC - Role-Based Access Control**).
+
+* **Estrutura interna:**
+  * `src/middlewares/auth.middleware.js`: Extração e validação do token Bearer, assinatura e expiração (`401 Unauthorized`).
+  * `src/middlewares/role.middleware.js`: Controle de permissões por perfil de usuário (`403 Forbidden`).
+  * `src/app.js`: Endpoints públicos (`/login`), protegidos (`/usuarios`, `/perfil`) e restritos a administradores (`DELETE /produtos/:id`).
+  * `test/auth-middleware.spec.js`: Cobertura completa de fluxos sem token, token inválido, token expirado, perfil insuficiente (`USER` vs `ADMIN`) e não vazamento de senhas.
+* **Documentação:** [Aula06/README.md](./Aula06/README.md).
+* **Comandos rápidos:**
+  ```bash
+  cd Aula06
+  npm install
+  npm test
+  npm run test:watch
+  ```
+
+---
+
 ## 🛠️ Tecnologias e Bibliotecas
 
 | Categoria | Tecnologias Utilizadas |
 | :--- | :--- |
 | **Linguagens & Runtime** | Node.js (v18+), JavaScript (ES6+), TypeScript |
 | **Frameworks de Teste** | Jest, Supertest |
-| **Frameworks Web** | NestJS (Common, Core, Testing, Platform-Express) |
+| **Frameworks Web** | Express, NestJS (Common, Core, Testing, Platform-Express) |
+| **Segurança & Autenticação** | JSON Web Token (`jsonwebtoken`), RBAC (Role-Based Access Control) |
 | **Banco de Dados & ORM/ODM** | MongoDB, Mongoose, mongodb-memory-server |
 | **Compilação & Tipagem** | Babel, TypeScript Compiler (`tsc`) |
 | **Validação** | class-validator, class-transformer |
@@ -221,6 +244,9 @@ cd Aula04 && npm install && npm test && cd ..
 
 # Para a Aula 05 (Mongoose + Persistência)
 cd Aula05 && npm install && npm test && cd ..
+
+# Para a Aula 06 (Middlewares + JWT + RBAC)
+cd Aula06 && npm install && npm test && cd ..
 ```
 
 ---
