@@ -72,7 +72,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-01: Requisição em rota protegida sem nenhum cabeçalho de autorização.
      * Resultado Esperado: Status HTTP 401 Unauthorized e mensagem de erro explicativa.
      */
-    it('deve bloquear acesso com status 401 quando nenhum token for informado', async () => {
+    test('deve bloquear acesso com status 401 quando nenhum token for informado', async () => {
       // ACT: Envia requisição GET para rota protegida sem o header Authorization
       const resposta = await request(app)
         .get('/usuarios')
@@ -87,7 +87,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-02: Requisição com cabeçalho presente, porém sem a estrutura "Bearer <token>".
      * Resultado Esperado: Status HTTP 401 Unauthorized informando erro de formato.
      */
-    it('deve rejeitar requisição com formato de cabeçalho fora do padrão "Bearer <token>"', async () => {
+    test('deve rejeitar requisição com formato de cabeçalho fora do padrão "Bearer <token>"', async () => {
       // ACT: Envia um formato inválido (ex.: sem o prefixo "Bearer")
       const resposta = await request(app)
         .get('/usuarios')
@@ -109,7 +109,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-03: Tentativa de forjar um token JWT assinado com outra chave secreta.
      * Resultado Esperado: Status HTTP 401 Unauthorized (falha na validação da assinatura criptográfica).
      */
-    it('deve rejeitar com status 401 token assinado com segredo incorreto (token adulterado)', async () => {
+    test('deve rejeitar com status 401 token assinado com segredo incorreto (token adulterado)', async () => {
       // ARRANGE: Cria um token assinado por chave não reconhecida pelo backend
       const tokenFalso = jwt.sign(
         { id: 99, nome: 'Hacker', role: 'admin' },
@@ -131,7 +131,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-04: Envio de token cuja data de expiração (exp) já passou.
      * Resultado Esperado: Status HTTP 401 Unauthorized por expiração temporal do token.
      */
-    it('deve rejeitar com status 401 quando o token JWT estiver expirado', async () => {
+    test('deve rejeitar com status 401 quando o token JWT estiver expirado', async () => {
       // ARRANGE: Cria um token com tempo de vida de 0 segundos (expiração instantânea)
       const tokenExpirado = jwt.sign(
         { id: 2, nome: 'Carlos', role: 'user' },
@@ -162,7 +162,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-05: Usuário autenticado acessando rota protegida comum.
      * Resultado Esperado: Status HTTP 200 OK e listagem de recursos.
      */
-    it('deve permitir acesso à listagem de usuários com token válido de USER', async () => {
+    test('deve permitir acesso à listagem de usuários com token válido de USER', async () => {
       // ACT: Faz requisição enviando o header Authorization com Bearer token válido
       const resposta = await request(app)
         .get('/usuarios')
@@ -178,7 +178,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-06: Verificação de injeção de dados decodificados (`req.user`) na requisição.
      * Resultado Esperado: Status HTTP 200 OK com os dados do usuário contidos no payload.
      */
-    it('deve retornar os dados do perfil decodificados a partir do token JWT', async () => {
+    test('deve retornar os dados do perfil decodificados a partir do token JWT', async () => {
       // ACT: Acessa a rota de perfil próprio
       const resposta = await request(app)
         .get('/perfil')
@@ -205,7 +205,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-07: Usuário comum autenticado tentando executar ação exclusiva de administrador.
      * Resultado Esperado: Status HTTP 403 Forbidden (Usuário reconhecido, mas sem permissão).
      */
-    it('USER não pode acessar rota restrita de ADMIN (deve retornar 403 Forbidden)', async () => {
+    test('USER não pode acessar rota restrita de ADMIN (deve retornar 403 Forbidden)', async () => {
       // ACT: Usuário comum tenta deletar um produto no endpoint administrativo
       const resposta = await request(app)
         .delete('/produtos/1')
@@ -223,7 +223,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-08: Administrador autenticado executando ação permitida ao seu perfil.
      * Resultado Esperado: Status HTTP 200 OK e confirmação da operação.
      */
-    it('ADMIN pode acessar e executar a ação na rota restrita (deve retornar 200 OK)', async () => {
+    test('ADMIN pode acessar e executar a ação na rota restrita (deve retornar 200 OK)', async () => {
       // ACT: Administrador executa a deleção
       const resposta = await request(app)
         .delete('/produtos/1')
@@ -246,7 +246,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-09: Garantir que nenhuma rota de listagem retorne senhas em texto puro ou hashes.
      * Resultado Esperado: Todos os objetos de usuário devem omitir campos como senha/senhaHash.
      */
-    it('não deve retornar senhaHash ou senhas em texto plano na rota de usuários', async () => {
+    test('não deve retornar senhaHash ou senhas em texto plano na rota de usuários', async () => {
       // ACT: Busca lista de usuários autenticado como admin
       const resposta = await request(app)
         .get('/usuarios')
@@ -265,7 +265,7 @@ describe('🧪 Aula 06 — Testes de Middleware, Autenticação e Autorização 
      * CT-10: Garantir que a resposta do endpoint de login retorne apenas o token e dados públicos.
      * Resultado Esperado: Objeto de usuário na resposta de login sem dados confidenciais de credenciais.
      */
-    it('o endpoint de login não deve expor a senhaHash no payload de resposta', async () => {
+    test('o endpoint de login não deve expor a senhaHash no payload de resposta', async () => {
       // ACT: Realiza login válido
       const resposta = await request(app)
         .post('/login')
