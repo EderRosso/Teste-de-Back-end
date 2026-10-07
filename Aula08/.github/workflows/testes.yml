@@ -1,0 +1,27 @@
+name: Pipeline de Testes Automatizados
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  executar-testes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Baixar código do repositório (Checkout)
+        uses: actions/checkout@v4
+
+      - name: 2. Configurar ambiente Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 3. Instalar dependências de forma limpa
+        run: npm ci
+
+      - name: 4. Executar bateria de testes com Jest
+        run: npm test
