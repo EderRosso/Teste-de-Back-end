@@ -43,6 +43,7 @@ describe("Testes de Sistema E2E - Jornada de Vendas", () => {
 
         // Extrai o JWT retornado pela API para autenticar as próximas requisições
         const token = login.body.token;
+        console.log('Token:', token);
         expect(token).toBeDefined();
 
         // -------------------------------------------------------------
@@ -56,6 +57,7 @@ describe("Testes de Sistema E2E - Jornada de Vendas", () => {
             .expect(200);
 
         const estoqueAntes = antes.body.estoque;
+        console.log('Estoque antes:', estoqueAntes);
 
         // -------------------------------------------------------------
         // PASSO 3 — REALIZAR A VENDA
@@ -83,6 +85,7 @@ describe("Testes de Sistema E2E - Jornada de Vendas", () => {
         // PASSO 5 — VALIDAR O RESULTADO (EFEITO COLATERAL)
         // Regra de Negócio: "Estoque depois = Estoque antes - Quantidade comprada"
         // -------------------------------------------------------------
+        console.log('Estoque depois:', depois.body.estoque);
         expect(depois.body.estoque).toBe(estoqueAntes - 1);
     });
 
@@ -129,7 +132,6 @@ describe("Testes de Sistema E2E - Jornada de Vendas", () => {
             .expect(200);
 
         // 6. Confirma que o estoque NÃO foi alterado
-        
         expect(depois.body.estoque).toBe(estoqueAntes);
     });
 
