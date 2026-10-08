@@ -45,7 +45,7 @@ aula08-automacao/
 │       └── testes.yml          # Workflow de Integração Contínua (GitHub Actions)
 ├── .gitignore                  # Arquivos ignorados pelo Git (node_modules, coverage)
 ├── package.json                # Configuração do projeto e scripts npm
-└── README.md                   # Documentação e guia didático da aula
+└── README.md                   # Documentação completa da aula
 ```
 
 ---
@@ -386,60 +386,3 @@ npx husky init
 echo "npm test" > .husky/pre-commit
 ```
 
----
-
-## 👨‍🏫 10. Guia Didático para o Professor (Momento a Momento)
-
-### 📌 Momento 1: Testes Locais e o Fator Humano
-- **O que o professor faz:** Executa `npm test` no terminal local.
-- **O que o professor fala:** *"Vejam, nossos testes passaram com sucesso no meu computador."*
-- **Pergunta para os alunos:** *"Quem executou os testes agora?"*
-- **Resposta esperada:** *"Nós mesmos / O desenvolvedor manualmente."*
-- **Pergunta seguinte:** *"E se na sexta-feira às 18h um desenvolvedor com pressa esquecer de rodar esse comando e der git push?"*
-- **Resposta esperada:** *"O código quebrado vai subir para o repositório e quebrar a aplicação em produção."*
-- **Erro comum dos alunos:** Achar que ter testes escritos no projeto já protege a aplicação automaticamente sem uma esteira de automação.
-
----
-
-### 📌 Momento 2: Análise do Code Coverage
-- **O que o professor faz:** Executa `npm test -- --coverage` com a primeira versão dos testes (sem testar `subtrair` e menor de idade).
-- **O que o professor fala:** *"Olhem para a tabela gerada no terminal. O que as cores e números nos dizem?"*
-- **Pergunta para os alunos:** *"Por que a coluna % Branch está em 50% se a função verificarIdade foi testada?"*
-- **Resposta esperada:** *"Porque só testamos quando a idade é maior ou igual a 18 (o if). O caminho do else (menor de idade) nunca foi percorrido."*
-- **Erro comum dos alunos:** Confundir cobertura de linhas com cobertura de decisões lógicas (*Branches*).
-
----
-
-### 📌 Momento 3: A Execução no GitHub Actions
-- **O que o professor faz:** Dá `git push` com o arquivo `testes.yml` e abre a aba **Actions** no navegador.
-- **O que o professor fala:** *"Vejam a máquina virtual do GitHub ligando, baixando o Node.js e executando os testes sozinha."*
-- **Pergunta para os alunos:** *"Quem executou o npm test agora?"*
-- **Resposta esperada:** *"O GitHub Actions / O pipeline automatizado."*
-- **Pergunta seguinte:** *"Alguém precisou lembrar de rodar os testes?"*
-- **Resposta esperada:** *"Não, foi disparado automaticamente pelo evento de push."*
-- **Erro comum dos alunos:** Achar que o GitHub Actions altera o código no computador local. Ele roda em um servidor isolado na nuvem.
-
----
-
-### 📌 Momento 4: O Teste Quebrado e o Pipeline Vermelho
-- **O que o professor faz:** Altera `return a + b` para `return a - b` no código, faz commit e push direto.
-- **O que o professor fala:** *"Cometi um erro de digitação clássico e esqueci de testar antes de subir. Vamos ver o que a nuvem diz."*
-- **Pergunta para os alunos:** *"Quem encontrou o erro?"*
-- **Resposta esperada:** *"O pipeline automatizado do GitHub Actions."*
-- **Pergunta seguinte:** *"Qual é o impacto disso em um time que usa Pull Requests?"*
-- **Resposta esperada:** *"O GitHub impede a aprovação do Pull Request, protegendo a branch principal de receber bugs."*
-- **Erro comum dos alunos:** Tentar consertar o erro pelo GitHub na web em vez de corrigir o código no editor local e enviar um novo commit de correção.
-
----
-
-## ⏱️ 11. Roteiro de Demonstração de 20 Minutos para o Professor
-
-| Minuto | Ação no Terminal / IDE | O que Demonstrar na Tela | Mensagem Chave |
-| :---: | :--- | :--- | :--- |
-| **00 - 03** | Abrir `src/calculadora.js` e `tests/calculadora.test.js` | Mostrar o código simples e rodar `npm test`. | *"Testes funcionam, mas dependem 100% da ação manual."* |
-| **03 - 07** | Rodar `npm test -- --coverage` | Apontar para a tabela no terminal: `Uncovered Line #s: 6, 13` e `Branch: 50%`. | *"Coverage nos mostra os pontos cegos do código que não foram testados."* |
-| **07 - 10** | Adicionar os testes de `subtrair` e `menor de idade`, rodar coverage novamente. | Mostrar a tabela alcançando 100% em todas as colunas. | *"Agora cobrimos todos os caminhos lógicos da aplicação."* |
-| **10 - 13** | Abrir `.github/workflows/testes.yml` | Explicar os 4 passos (`Checkout`, `Setup Node`, `npm ci`, `npm test`). | *"O arquivo YAML é a receita de bolo que o GitHub seguirá em cada push."* |
-| **13 - 16** | Fazer `git push` e abrir o navegador na aba **Actions** | Mostrar a bolinha amarela virando **verde (Pass)** e inspecionar o log. | *"A nuvem executou os testes exatamente como nós fizemos localmente."* |
-| **16 - 18** | Inserir o bug proposital (`return a - b`), commitar e enviar com `git push`. | Atualizar a página do GitHub e ver a esteira ficar **vermelha (Fail)**. | *"O CI encontrou o erro sem que ninguém precisasse lembrar de testar."* |
-| **18 - 20** | Corrigir a função, commitar e enviar `git push`. | Ver o pipeline voltar para o estado **verde (Pass)**. | *"Fechamos o ciclo de feedback contínuo da engenharia moderna."* |
