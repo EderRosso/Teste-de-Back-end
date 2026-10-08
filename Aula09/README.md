@@ -19,9 +19,8 @@ O objetivo principal desta aula é ensinar **como selecionar casos de teste de m
 9. [Parte 6 — Introdução aos Testes de Mutação](#9-parte-6--introdução-aos-testes-de-mutação)
 10. [Passo a Passo de Instalação e Execução](#10-passo-a-passo-de-instalação-e-execução)
 11. [Atividade Prática para os Alunos](#11-atividade-prática-para-os-alunos)
-12. [Gabarito da Atividade do Aluno](#12-gabarito-da-atividade-do-aluno)
-13. [Explicação Linha por Linha de Conceitos Fundamentais](#13-explicação-linha-por-linha-de-conceitos-fundamentais)
-14. [Solução de Dúvidas e Erros Comuns](#14-solução-de-dúvidas-e-erros-comuns)
+12. [Explicação Linha por Linha de Conceitos Fundamentais](#12-explicação-linha-por-linha-de-conceitos-fundamentais)
+13. [Solução de Dúvidas e Erros Comuns](#13-solução-de-dúvidas-e-erros-comuns)
 
 ---
 
@@ -497,93 +496,7 @@ Você foi encarregado de implementar e testar a função `validarDesconto(valorC
 
 ---
 
-## 12. Gabarito da Atividade do Aluno
-
-### 1. Implementação do Código: `src/desconto.js`
-
-```javascript
-function validarDesconto(valorCompra, cupom, ehPrimeiraCompra) {
-    // Regra 1: Valor mínimo
-    if (valorCompra < 100) {
-        return false;
-    }
-
-    // Regra 2: Benefício de cupom ou primeira compra
-    if (cupom === 'PROMO10' || ehPrimeiraCompra === true) {
-        return true;
-    }
-
-    return false;
-}
-
-module.exports = { validarDesconto };
-```
-
-### 2. Testes Completos: `tests/desconto.test.js`
-
-```javascript
-const { validarDesconto } = require('../src/desconto');
-
-describe('Atividade Prática - Validação de Desconto', () => {
-
-    // 1. Partições de Equivalência (Valor da Compra)
-    describe('Partições de Equivalência', () => {
-        test('Partição Inválida (Abaixo de 100): compra de R$ 50 deve retornar false', () => {
-            expect(validarDesconto(50, 'PROMO10', false)).toBe(false);
-        });
-
-        test('Partição Válida (Acima de 100 com cupom): compra de R$ 250 deve retornar true', () => {
-            expect(validarDesconto(250, 'PROMO10', false)).toBe(true);
-        });
-    });
-
-    // 2. Análise de Valor Limite (Fronteira dos R$ 100,00)
-    describe('Análise de Valor Limite (Borda de R$ 100,00)', () => {
-        test('Limite - 1 centavo: R$ 99.99 deve retornar false', () => {
-            expect(validarDesconto(99.99, 'PROMO10', false)).toBe(false);
-        });
-
-        test('Limite Exato: R$ 100.00 deve retornar true', () => {
-            expect(validarDesconto(100.00, 'PROMO10', false)).toBe(true);
-        });
-
-        test('Limite + 1 centavo: R$ 100.01 deve retornar true', () => {
-            expect(validarDesconto(100.01, 'PROMO10', false)).toBe(true);
-        });
-
-        test('Limite Zero: R$ 0.00 deve retornar false', () => {
-            expect(validarDesconto(0.00, 'PROMO10', false)).toBe(false);
-        });
-    });
-
-    // 3. Tabela de Decisão (Cupom vs Primeira Compra para compra de R$ 150)
-    describe('Tabela de Decisão', () => {
-        test('Cupom Válido + Primeira Compra Sim -> true', () => {
-            expect(validarDesconto(150, 'PROMO10', true)).toBe(true);
-        });
-
-        test('Cupom Válido + Primeira Compra Não -> true', () => {
-            expect(validarDesconto(150, 'PROMO10', false)).toBe(true);
-        });
-
-        test('Sem Cupom + Primeira Compra Sim -> true', () => {
-            expect(validarDesconto(150, 'OUTRO', true)).toBe(true);
-        });
-
-        test('Sem Cupom + Primeira Compra Não -> false', () => {
-            expect(validarDesconto(150, 'OUTRO', false)).toBe(false);
-        });
-    });
-});
-```
-
-### 3. Simulação de Mutação:
-- Altere `if (valorCompra < 100)` para `if (valorCompra <= 100)`.
-- Ao rodar `npm test`, o teste `Limite Exato: R$ 100.00 deve retornar true` falhará, capturando o defeito.
-
----
-
-## 13. Explicação Linha por Linha de Conceitos Fundamentais
+## 12. Explicação Linha por Linha de Conceitos Fundamentais
 
 Para alunos iniciantes em programação e testes:
 
@@ -604,7 +517,7 @@ Para alunos iniciantes em programação e testes:
 
 ---
 
-## 14. Solução de Dúvidas e Erros Comuns
+## 13. Solução de Dúvidas e Erros Comuns
 
 ### 1. `ReferenceError: require is not defined` ou erro de módulo ES
 - **Causa:** O `package.json` está com `"type": "module"`.
