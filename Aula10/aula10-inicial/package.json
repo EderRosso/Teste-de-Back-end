@@ -1,0 +1,24 @@
+{
+  "name": "aula10-cobertura-performance-inicial",
+  "version": "1.0.0",
+  "description": "Projeto didático da Aula 10 - Cobertura e Performance (Versão Inicial - Incompleta)",
+  "main": "src/produtos.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "performance": "node src/performance.js"
+  },
+  "keywords": [
+    "jest",
+    "coverage",
+    "performance",
+    "senai",
+    "thresholds"
+  ],
+  "author": "SENAI Canoas",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
