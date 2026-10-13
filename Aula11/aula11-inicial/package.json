@@ -1,0 +1,25 @@
+{
+  "name": "aula11-excecoes-resiliencia-inicial",
+  "version": "1.0.0",
+  "description": "Projeto didático da Aula 11 - Tratamento de Exceções e Resiliência (Versão Inicial - Desafios)",
+  "main": "src/pagamentoService.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "jest",
+    "exceptions",
+    "resilience",
+    "retry",
+    "timeout",
+    "fallback",
+    "senai"
+  ],
+  "author": "SENAI Canoas",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
