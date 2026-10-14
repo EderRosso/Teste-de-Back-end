@@ -1,0 +1,20 @@
+{
+  "statusHttp": 400,
+  "statusText": "Bad Request",
+  "descricao": "Evidência da resposta correta da API após a correção do BUG-001 (rejeitou adequadamente a quantidade negativa)",
+  "requisicao": {
+    "metodo": "POST",
+    "endpoint": "/pedidos",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "produto": "Mouse sem Fio",
+      "quantidade": -2,
+      "valor": 80
+    }
+  },
+  "resposta": {
+    "error": "A quantidade deve ser um número inteiro maior que zero."
+  }
+}

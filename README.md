@@ -34,6 +34,8 @@
   - [7. Aula 08 — Automação de Testes, Code Coverage, CI e GitHub Actions](#7-aula-08--automação-de-testes-code-coverage-ci-e-github-actions)
   - [8. Aula 09 — Técnicas de Caixa Branca e Caixa Preta com Jest](#8-aula-09--técnicas-de-caixa-branca-e-caixa-preta-com-jest)
   - [9. Aula 10 — Análise de Cobertura, Thresholds e Performance](#9-aula-10--análise-de-cobertura-thresholds-e-performance)
+  - [10. Aula 11 — Tratamento de Exceções, Resiliência e Padrões de Falha](#10-aula-11--tratamento-de-exceções-resiliência-e-padrões-de-falha)
+  - [11. Aula 12 — Documentação de Testes: Do Bug à Evidência](#11-aula-12--documentação-de-testes-do-bug-à-evidência)
 - [🛠️ Tecnologias e Bibliotecas](#️-tecnologias-e-bibliotecas)
 - [🚀 Como Executar o Repositório](#-como-executar-o-repositório)
 - [🧬 Conceitos Fundamentais](#-conceitos-fundamentais)
@@ -80,6 +82,8 @@ Clique nos links abaixo para navegar diretamente para a pasta de cada aula no re
 | 📁 [**Aula08**](./Aula08) | Automação e CI/CD | Code Coverage, relatórios e esteiras automatizadas via GitHub Actions. |
 | 📁 [**Aula09**](./Aula09) | Caixa Branca e Caixa Preta | Partição de equivalência, análise de valor limite (BVA) e tabela de decisão. |
 | 📁 [**Aula10**](./Aula10) | Cobertura & Performance | Análise de métricas, *thresholds* rigorosos e benchmarking de algoritmos ($O(N)$ vs $O(1)$). |
+| 📁 [**Aula11**](./Aula11) | Exceções & Resiliência | Tratamento de falhas, erros de negócio vs técnicos, retry, timeout e fallback. |
+| 📁 [**Aula12**](./Aula12) | Documentação de Testes | Do Bug à Evidência: Test Report, Bug Report (BUG-001), Fix Report e regressão. |
 
 ---
 
@@ -264,6 +268,50 @@ Métricas de qualidade de código, aplicação de **Thresholds** mínimos e aná
   # Versão resolvida
   cd Aula10/aula10-resolvida && npm install && npm test
   npm run benchmark
+  ```
+
+---
+
+### 10. [Aula 11](./Aula11) — Tratamento de Exceções, Resiliência e Padrões de Falha
+
+Estratégias avançadas de **tolerância a falhas**, distinção entre erros operacionais/de negócio e erros técnicos, e implementação de padrões de resiliência (**Retry com Backoff**, **Timeout** e **Fallback**).
+
+* **Conceitos explorados:**
+  * Diferença entre erros de negócio (`400/422`) e falhas técnicas transitórias (`500/503`).
+  * Padrão Retry com backoff exponencial para chamadas assíncronas.
+  * Proteção contra requisições zumbis via `AbortController` / timeout.
+  * Degradação graciosa (*graceful degradation*) e circuit fallback.
+* **Documentação:** [Aula11/ROTEIRO_PROFESSOR.md](./Aula11/ROTEIRO_PROFESSOR.md).
+* **Comandos rápidos:**
+  ```bash
+  cd Aula11/aula11-resolvida
+  npm install
+  npm test
+  ```
+
+---
+
+### 11. [Aula 12](./Aula12) — Documentação de Testes: Do Bug à Evidência
+
+Laboratório prático orientado de **60 minutos** simulando o ciclo profissional completo de QA: execução de testes, interpretação de falhas no Jest, isolamento de causa raiz, elaboração de **Bug Report** formal, correção lógica, **testes de regressão** e emissão de **evidências técnicas auditáveis**.
+
+* **Conceitos explorados:**
+  * Ciclo: Executar $\rightarrow$ Interpretar $\rightarrow$ Documentar Bug $\rightarrow$ Corrigir $\rightarrow$ Regressão $\rightarrow$ Evidências.
+  * Elaboração de `TEST_REPORT.md` com métricas reais de cobertura e status de suíte.
+  * Formalização do `BUG_REPORT.md` (BUG-001) com diferenciação entre **Severidade** e **Prioridade**.
+  * Emissão do `FIX_REPORT.md` com análise de causa raiz, diff de código e validação de 100% dos testes aprovados.
+  * Geração e padronização de arquivos de evidência (`teste-falhando.txt`, `cobertura-antes.txt`, `teste-aprovado.txt`, `cobertura-depois.txt`).
+* **Documentação:** [Aula12/README.md](./Aula12/README.md) e [Aula12/ROTEIRO_PROFESSOR.md](./Aula12/ROTEIRO_PROFESSOR.md).
+* **Pacotes ZIP para distribuição:**
+  * 📦 [Aula 12 - Laboratorio (projeto dos alunos).zip](./Aula12/Aula%2012%20-%20Laboratorio%20(projeto%20dos%20alunos).zip)
+  * 📦 [Aula 12 - Laboratorio (solucao do professor).zip](./Aula12/Aula%2012%20-%20Laboratorio%20(solucao%20do%20professor).zip)
+* **Comandos rápidos:**
+  ```bash
+  # Laboratório dos Alunos (com BUG-001 intencional)
+  cd Aula12/aula12-laboratorio-alunos && npm test
+
+  # Solução de Referência do Professor (100% aprovada)
+  cd Aula12/aula12-laboratorio-professor && npm test
   ```
 
 ---

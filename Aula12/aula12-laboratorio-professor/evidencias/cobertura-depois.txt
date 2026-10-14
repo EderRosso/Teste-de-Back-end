@@ -1,0 +1,33 @@
+> aula12-documentacao-testes-professor@1.0.0 test:coverage
+> jest --coverage --runInBand
+
+PASS tests/pedido.api.test.js
+PASS tests/pedido.service.test.js
+
+-----------------------|---------|----------|---------|---------|-------------------
+File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------|---------|----------|---------|---------|-------------------
+All files              |    97.1 |    96.15 |    87.5 |    98.5 |                   
+ src                   |     100 |      100 |     100 |     100 |                   
+  app.js               |     100 |      100 |     100 |     100 |                   
+ src/controllers       |     100 |      100 |     100 |     100 |                   
+  pedido.controller.js |     100 |      100 |     100 |     100 |                   
+ src/middlewares       |     100 |      100 |     100 |     100 |                   
+  error.middleware.js  |     100 |      100 |     100 |     100 |                   
+ src/repositories      |   86.66 |       75 |   71.42 |    92.3 |                   
+  pedido.repository.js |   86.66 |       75 |   71.42 |    92.3 | 44                
+ src/services          |     100 |      100 |     100 |     100 |                   
+  pedido.service.js    |     100 |      100 |     100 |     100 |                   
+-----------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 97.1% ( 67/69 )
+Branches     : 96.15% ( 25/26 )
+Functions    : 87.5% ( 14/16 )
+Lines        : 98.5% ( 66/67 )
+================================================================================
+Test Suites: 2 passed, 2 total
+Tests:       19 passed, 19 total
+Snapshots:   0 total
+Time:        2.36 s, estimated 9 s
+Ran all test suites.

@@ -1,0 +1,25 @@
+{
+  "statusHttp": 201,
+  "statusText": "Created",
+  "descricao": "Evidência da resposta anômala da API antes da correção do BUG-001 (aceitou indevidamente quantidade negativa)",
+  "requisicao": {
+    "metodo": "POST",
+    "endpoint": "/pedidos",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "produto": "Mouse sem Fio",
+      "quantidade": -2,
+      "valor": 80
+    }
+  },
+  "resposta": {
+    "id": 1,
+    "produto": "Mouse sem Fio",
+    "quantidade": -2,
+    "valor": 80,
+    "total": -160,
+    "criadoEm": "2026-10-14T14:57:43.993Z"
+  }
+}

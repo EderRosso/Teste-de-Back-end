@@ -1,0 +1,37 @@
+> aula12-documentacao-testes-professor@1.0.0 test
+> jest --runInBand
+
+PASS tests/pedido.api.test.js
+  Integration Tests: API de Pedidos (Express + Supertest)
+    POST /pedidos - Cadastro de Pedidos
+      √ 1. Deve cadastrar um pedido válido com status HTTP 201 (233 ms)
+      √ 4. Deve retornar HTTP 400 ao tentar cadastrar produto com nome vazio (6 ms)
+      √ 6. Deve retornar HTTP 400 ao tentar cadastrar com quantidade zero (4 ms)
+      √ 5. [BUG-001] Deve retornar HTTP 400 ao enviar quantidade negativa (5 ms)
+      √ 7. Deve retornar HTTP 400 ao enviar valor negativo (4 ms)
+      √ 8. Deve retornar HTTP 400 ao enviar valor zero (4 ms)
+      √ 9. Deve retornar HTTP 500 sem expor detalhes técnicos em caso de erro inesperado (4 ms)
+    GET /pedidos/:id - Consulta de Pedidos
+      √ 2. Deve consultar um pedido existente com HTTP 200 (7 ms)
+      √ 3. Deve retornar HTTP 404 para pedido inexistente (4 ms)
+      √ 10. Deve garantir que o estado do repositório é isolado entre requisições (3 ms)
+
+PASS tests/pedido.service.test.js
+  Unit Tests: PedidoService
+    cadastrarPedido
+      √ 1. Deve cadastrar um pedido válido com sucesso (1 ms)
+      √ 4. Deve rejeitar produto com nome vazio ou apenas espaços (10 ms)
+      √ 6. Deve rejeitar quantidade igual a zero
+      √ 5. [BUG-001] Deve rejeitar quantidade negativa lançando ValidationError (1 ms)
+      √ Extra. Deve rejeitar quantidade fracionária (não inteira)
+      √ 8. Deve rejeitar valor igual a zero (1 ms)
+      √ 7. Deve rejeitar valor negativo
+    buscarPedidoPorId
+      √ 2. Deve consultar um pedido existente por ID com sucesso (1 ms)
+      √ 3. Deve lançar NotFoundError ao consultar pedido inexistente
+
+Test Suites: 2 passed, 2 total
+Tests:       19 passed, 19 total
+Snapshots:   0 total
+Time:        9.291 s
+Ran all test suites.
