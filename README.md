@@ -302,16 +302,16 @@ Laboratório prático orientado de **60 minutos** simulando o ciclo profissional
   * Emissão do `FIX_REPORT.md` com análise de causa raiz, diff de código e validação de 100% dos testes aprovados.
   * Geração e padronização de arquivos de evidência (`teste-falhando.txt`, `cobertura-antes.txt`, `teste-aprovado.txt`, `cobertura-depois.txt`).
 * **Documentação:** [Aula12/README.md](./Aula12/README.md) e [Aula12/ROTEIRO_PROFESSOR.md](./Aula12/ROTEIRO_PROFESSOR.md).
-* **Pacotes ZIP para distribuição:**
-  * 📦 [Aula 12 - Laboratorio (projeto dos alunos).zip](./Aula12/Aula%2012%20-%20Laboratorio%20(projeto%20dos%20alunos).zip)
-  * 📦 [Aula 12 - Laboratorio (solucao do professor).zip](./Aula12/Aula%2012%20-%20Laboratorio%20(solucao%20do%20professor).zip)
+* **Estrutura:**
+  * `aula12-inicial/`: Versão inicial com o defeito intencional (**BUG-001**), testes falhando, arquivo `requisicoes.http` e modelos preenchíveis.
+  * `aula12-resolvida/`: Aplicação corrigida funcionando de forma correta, 100% dos testes aprovados, relatórios preenchidos e evidências reais para conferência.
 * **Comandos rápidos:**
   ```bash
-  # Laboratório dos Alunos (com BUG-001 intencional)
-  cd Aula12/aula12-laboratorio-alunos && npm test
+  # Versão Inicial (com BUG-001 para os alunos testarem e documentarem)
+  cd Aula12/aula12-inicial && npm install && npm test
 
-  # Solução de Referência do Professor (100% aprovada)
-  cd Aula12/aula12-laboratorio-professor && npm test
+  # Versão Resolvida (aplicação corrigida para conferência)
+  cd Aula12/aula12-resolvida && npm install && npm test
   ```
 
 ---

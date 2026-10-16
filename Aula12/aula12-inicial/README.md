@@ -37,7 +37,7 @@ Você está recebendo uma API REST desenvolvida em Node.js e Express para gerenc
 ## 📂 Estrutura do Projeto Explicada
 
 ```text
-aula12-documentacao-testes/
+aula12-inicial/
 ├── src/
 │   ├── app.js                          # Configuração da aplicação Express e registro de rotas
 │   ├── server.js                       # Ponto de entrada do servidor (escuta na porta 3000)
@@ -58,6 +58,9 @@ aula12-documentacao-testes/
 │   └── FIX_REPORT.md                   # Modelo do relatório de correção e regressão
 ├── evidencias/
 │   └── README.md                       # Orientações sobre captura e armazenamento de evidências
+├── scripts/
+│   └── evidencia.js                    # Script para gravação automatizada de evidências com cabeçalho QA
+├── requisicoes.http                    # Arquivo de testes exploratórios (CT-01 a CT-06) para REST Client
 ├── package.json                        # Gerenciador de dependências e scripts de execução
 ├── jest.config.js                      # Configuração do ambiente de testes e métricas de cobertura
 ├── .gitignore                          # Arquivos e diretórios ignorados pelo Git

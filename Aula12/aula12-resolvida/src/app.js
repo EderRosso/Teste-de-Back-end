@@ -9,6 +9,7 @@ app.use(express.json());
 
 // Rotas da API de Pedidos
 app.post('/pedidos', pedidoController.cadastrar);
+app.get('/pedidos', pedidoController.listar);
 app.get('/pedidos/:id', pedidoController.buscarPorId);
 
 // Middleware de tratamento global de exceções (deve ser o último app.use)

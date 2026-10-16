@@ -43,10 +43,8 @@ Nesta aula, os alunos vivenciam o fluxo completo de QA e desenvolvimento Back-En
 | Recurso | Descrição |
 | :--- | :--- |
 | 🎙️ [**ROTEIRO_PROFESSOR.md**](./ROTEIRO_PROFESSOR.md) | Guia completo de condução didática, perguntas socráticas, script do professor e rubrica de 10 pontos. |
-| 📁 [**aula12-laboratorio-alunos/**](./aula12-laboratorio-alunos/) | Versão inicial do projeto com o defeito intencional (**BUG-001**), testes falhando e modelos preenchíveis. |
-| 📁 [**aula12-laboratorio-professor/**](./aula12-laboratorio-professor/) | Solução de referência com o defeito corrigido, 100% dos testes aprovados, relatórios preenchidos e evidências reais. |
-| 📦 [**Aula 12 - Laboratorio (projeto dos alunos).zip**](./Aula%2012%20-%20Laboratorio%20(projeto%20dos%20alunos).zip) | Pacote ZIP limpo e portátil pronto para distribuição aos alunos. |
-| 📦 [**Aula 12 - Laboratorio (solucao do professor).zip**](./Aula%2012%20-%20Laboratorio%20(solucao%20do%20professor).zip) | Pacote ZIP completo com o gabarito do professor para correção. |
+| 📁 [**aula12-inicial/**](./aula12-inicial/) | Versão inicial do projeto com o defeito intencional (**BUG-001**), testes falhando, arquivo `requisicoes.http`, script de evidências e modelos preenchíveis. |
+| 📁 [**aula12-resolvida/**](./aula12-resolvida/) | Aplicação corrigida e funcionando de forma correta, 100% dos testes aprovados, relatórios preenchidos e evidências reais para conferência. |
 
 ---
 

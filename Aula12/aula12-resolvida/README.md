@@ -1,7 +1,7 @@
-# 🧪 Laboratório Prático da Aula 12 — Solução do Professor (Gabarito Completo)
+# 🧪 Laboratório Prático da Aula 12 — Aplicação Resolvida (Referência Completa)
 ## Curso de Programador Full-Stack — SENAI Canoas
 
-Este diretório contém a **solução de referência** do laboratório prático da Aula 12 (**Do Bug à Evidência: Documentação de Testes no Back-End**).
+Este diretório contém a **versão resolvida** do laboratório prático da Aula 12 (**Do Bug à Evidência: Documentação de Testes no Back-End**), permitindo que os alunos confiram a aplicação funcionando de forma correta, comparem os relatórios de QA e respondam aos exercícios propostos para a entrega.
 
 ---
 

@@ -1,0 +1,72 @@
+### ====================================================================
+### 🧪 REQUISIÇÕES HTTP - AULA 12 (TESTES EXPLORATÓRIOS)
+### Execute cada requisição clicando em "Send Request" acima do bloco
+### Requer a extensão "REST Client" no VS Code
+### Antes de rodar, suba a API no terminal com: npm start
+### ====================================================================
+
+@baseUrl = http://localhost:3000
+
+### --------------------------------------------------------------------
+### CT-01: 1 · Pedido Válido (Teclado, 2 × 150 -> Esperado: 201, total 300)
+### --------------------------------------------------------------------
+POST {{baseUrl}}/pedidos
+Content-Type: application/json
+
+{
+  "produto": "Teclado",
+  "quantidade": 2,
+  "precoUnitario": 150
+}
+
+### --------------------------------------------------------------------
+### CT-02: 2 · Sem Produto (Esperado: 400 "O produto deve ter um nome válido.")
+### --------------------------------------------------------------------
+POST {{baseUrl}}/pedidos
+Content-Type: application/json
+
+{
+  "quantidade": 1,
+  "precoUnitario": 10
+}
+
+### --------------------------------------------------------------------
+### CT-03: 3 · Quantidade Zero (Esperado: 400 "A quantidade deve ser um número inteiro maior que zero.")
+### --------------------------------------------------------------------
+POST {{baseUrl}}/pedidos
+Content-Type: application/json
+
+{
+  "produto": "Mouse",
+  "quantidade": 0,
+  "precoUnitario": 80
+}
+
+### --------------------------------------------------------------------
+### CT-04: 4 · Casas Decimais (Esperado: 400 "A quantidade deve ser um número inteiro maior que zero.")
+### --------------------------------------------------------------------
+POST {{baseUrl}}/pedidos
+Content-Type: application/json
+
+{
+  "produto": "Mouse",
+  "quantidade": 2.5,
+  "precoUnitario": 80
+}
+
+### --------------------------------------------------------------------
+### CT-05: 5 · Quantidade Negativa (⚠️ REVELA BUG-001: Esperado 400, mas API aceita e dá 201 com total negativo!)
+### --------------------------------------------------------------------
+POST {{baseUrl}}/pedidos
+Content-Type: application/json
+
+{
+  "produto": "Teclado",
+  "quantidade": -3,
+  "precoUnitario": 150
+}
+
+### --------------------------------------------------------------------
+### CT-06: 6 · Listar Pedidos (Esperado: 200 com array de pedidos)
+### --------------------------------------------------------------------
+GET {{baseUrl}}/pedidos

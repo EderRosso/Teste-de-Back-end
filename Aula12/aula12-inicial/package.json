@@ -1,14 +1,15 @@
 {
-  "name": "aula12-documentacao-testes-professor",
+  "name": "aula12-inicial",
   "version": "1.0.0",
-  "description": "Laboratório Prático Aula 12 - Solução do Professor (BUG-001 Corrigido e Evidências Reais)",
+  "description": "Laboratório Prático Aula 12 - Do Bug à Evidência: Documentação de Testes no Back-End (SENAI)",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "test": "jest --runInBand",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --runInBand"
+    "test:coverage": "jest --coverage --runInBand",
+    "evidencia": "node scripts/evidencia.js"
   },
   "keywords": [
     "jest",
@@ -16,7 +17,7 @@
     "express",
     "qa",
     "bug-report",
-    "fix-report",
+    "test-documentation",
     "senai"
   ],
   "author": "SENAI Canoas",

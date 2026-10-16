@@ -84,6 +84,15 @@ class PedidoService {
     }
     return pedido;
   }
+
+  /**
+   * Consulta todos os pedidos existentes.
+   * 
+   * @returns {Promise<Array<Object>>} Lista de pedidos
+   */
+  async listarPedidos() {
+    return this.repository.listar();
+  }
 }
 
 module.exports = new PedidoService();
