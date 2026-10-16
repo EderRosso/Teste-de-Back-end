@@ -42,7 +42,6 @@ Nesta aula, os alunos vivenciam o fluxo completo de QA e desenvolvimento Back-En
 
 | Recurso | Descrição |
 | :--- | :--- |
-| 🎙️ [**ROTEIRO_PROFESSOR.md**](./ROTEIRO_PROFESSOR.md) | Guia completo de condução didática, perguntas socráticas, script do professor e rubrica de 10 pontos. |
 | 📁 [**aula12-inicial/**](./aula12-inicial/) | Versão inicial do projeto com o defeito intencional (**BUG-001**), testes falhando, arquivo `requisicoes.http`, script de evidências e modelos preenchíveis. |
 | 📁 [**aula12-resolvida/**](./aula12-resolvida/) | Aplicação corrigida e funcionando de forma correta, 100% dos testes aprovados, relatórios preenchidos e evidências reais para conferência. |
 

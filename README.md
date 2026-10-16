@@ -301,7 +301,7 @@ Laboratório prático orientado de **60 minutos** simulando o ciclo profissional
   * Formalização do `BUG_REPORT.md` (BUG-001) com diferenciação entre **Severidade** e **Prioridade**.
   * Emissão do `FIX_REPORT.md` com análise de causa raiz, diff de código e validação de 100% dos testes aprovados.
   * Geração e padronização de arquivos de evidência (`teste-falhando.txt`, `cobertura-antes.txt`, `teste-aprovado.txt`, `cobertura-depois.txt`).
-* **Documentação:** [Aula12/README.md](./Aula12/README.md) e [Aula12/ROTEIRO_PROFESSOR.md](./Aula12/ROTEIRO_PROFESSOR.md).
+* **Documentação:** [Aula12/README.md](./Aula12/README.md).
 * **Estrutura:**
   * `aula12-inicial/`: Versão inicial com o defeito intencional (**BUG-001**), testes falhando, arquivo `requisicoes.http` e modelos preenchíveis.
   * `aula12-resolvida/`: Aplicação corrigida funcionando de forma correta, 100% dos testes aprovados, relatórios preenchidos e evidências reais para conferência.
