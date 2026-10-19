@@ -1,0 +1,13 @@
+{
+  "name": "lab-aula11-pedidos",
+  "version": "1.0.0",
+  "description": "Laboratório da Aula 11 — Tratamento de Exceções e Resiliência (Testes de Back-End · SENAI)",
+  "main": "src/pedidoService.js",
+  "scripts": {
+    "test": "jest",
+    "simular": "node scripts/simular.js"
+  },
+  "devDependencies": {
+    "jest": "^30.0.0"
+  }
+}
